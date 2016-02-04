@@ -1,0 +1,17 @@
+{
+    "summary": "Useful Monads for elm.",
+    "source-directories": [
+        "lib"
+    ],
+    "repository": "https://github.com/JustusAdam/elm-monad.git",
+    "dependencies": {
+        "elm-lang/core": "3.0.0 <= v < 4.0.0"
+    },
+    "exposed-modules": [
+      "Monad.State",
+      "Monad.Reader"
+    ],
+    "version": "1.0.0",
+    "elm-version": "0.15.0 <= v < 0.16.0",
+    "license": "MIT"
+}
