@@ -4,7 +4,7 @@ module Monad.State where
 type alias State s v = s -> (v, s)
 
 
-runState : s -> State s a -> (s, a)
+runState : s -> State s a -> (a, s)
 runState initial s = s initial
 
 
@@ -46,3 +46,7 @@ modify f s = ((), f s)
 
 map : (a -> b) -> State s a -> State s b
 map f s = s `andThen` (return << f)
+
+
+ap : State s (a -> b) -> State s a -> State s b
+ap sf a = st `andThen` \f -> State.map f a

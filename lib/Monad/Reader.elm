@@ -8,12 +8,15 @@ type alias Reader env a = S.State env a
 
 
 runReader : env -> Reader env a -> a
-runReader env r =
-  let (_, a) = r env in a
+runReader env r = S.execState
 
 
 andThen : Reader env a -> (a -> Reader env b) -> Reader env b
 andThen = S.andThen
+
+
+thenDo : Reader env a -> Reader env b -> Reader env b
+thenTo = S.thenDo
 
 
 return : a -> Reader env a
@@ -35,3 +38,11 @@ local f r =
   `S.thenDo` r
   `andThen` \res ->
   S.put old `S.thenDo` return res
+
+
+map : (a -> b) -> Reader env a -> Reader env b
+map = S.map
+
+
+ap : Reader env (a -> b) -> Reader env a -> Reader env b
+ap = S.ap

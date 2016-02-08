@@ -29,3 +29,7 @@ map = S.map
 
 return : a -> Writer w a
 return = S.return
+
+
+ap : Writer w (a -> b) -> Writer w a -> Writer w b
+ap = S.ap
